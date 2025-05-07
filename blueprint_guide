@@ -1,0 +1,19 @@
+# Unreal Engine Blueprint User Guide
+
+## Table of Contents
+
+- [Introduction](#introduction)
+- [Set Up](#set-up)
+- [Blueprint Guide](#blueprint-guide)
+
+## Introduction
+
+Welcome to the Unreal Engine Blueprint Guide. This will outline how to get started on making blueprints in Unreal Engine.
+
+## Set Up
+
+Follow [this linked setup guide](install_UE.md) to get Unreal Engine installed on your computer.
+
+## Blueprint Guide
+
+The rest of this guide will outline a simple and easy tutorial for Unreal Engine blueprints.
