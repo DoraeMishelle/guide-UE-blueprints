@@ -8,7 +8,7 @@
 
 ## Introduction
 
-Welcome to the Unreal Engine Blueprint Guide. This will outline how to get started on making blueprints in Unreal Engine.
+Welcome to the Unreal Engine Blueprint Guide. This will outline how to get started on making blueprints in Unreal Engine using both blueprints and C++.
 
 ## Set Up
 
@@ -16,4 +16,51 @@ Follow [this linked setup guide](install_UE.md) to get Unreal Engine installed o
 
 ## Blueprint Guide
 
-The rest of this guide will outline a simple and easy tutorial for Unreal Engine blueprints.
+For this guide, we will be working with the latest version at the time of writing which is 5.5.4. The rest of this guide will outline a simple and easy tutorial for Unreal Engine blueprints. If you want to see the full developer documentation you can head to the [developer guides on the Epic website](https://dev.epicgames.com/documentation/en-us/unreal-engine/blueprints-visual-scripting-in-unreal-engine)
+
+### Blueprints Overview
+
+What is a blueprint?: A visual scripting system to achieve gameplay scripting through nodes- all within Unreal Engine.
+
+You can create unique gameplay by C++ alone or also coupled with the blueprints feature. It makes creating gameplay easy and accessible without the need to know everything about writing in C++ code.
+Here is a preview of a blueprint that we will walk through the components and logic for.
+
+Intention: We will start by making changes in the level, then using C++ to add preliminary logic, and lastly we will build out the details in the blueprint to acheieve the blueprint pictured above.
+
+![alt text](<ue blueprint image.png>)
+
+In this image, the boxes are nodes and they all connect to each other in some logical way.
+
+### Launch Unreal Engine and configure your project
+
+![alt text](<Screenshot 2025-05-07 173604.png>)
+
+1. Select the following project preferences:
+
+    1. Game (Left hand side)
+    1. Top Down
+    1. On the right, you can toggle blueprint or C++. Select Blueprint and we will add C++ later on.
+    1. Target Platform is Desktop
+    1. Check Starter Content box
+
+Your level should load and next we will want to add a playable character to this level
+
+### Add a playable character
+
+1. Select Content Drawer in the bottom left corner
+1. Click Add (with green plus)
+1. Select add feature or content pack
+1. A new window will open. Select Third Person. This enabled player movability features
+1. Now change the default game mode by going to Edit in the top left panel
+1. Select project settings
+1. Click maps and modes
+1. Under default mode, select third person (listed as BP_ThirdPersonGameMode)
+1. You close the windows that are open leaving the main viewport and press the green play button. This will trigger the playable character to move around.
+1. Click anywhere in the level and drag your mouse in the direction you want the character to move
+1. Press red stop button when you are done
+
+The next step is to add physics to our cylinder(s) and so we will be required to set up our C++ environment
+
+### C++ environment
+
+We will need to configure a new C++ environment to create some logic for our actors
