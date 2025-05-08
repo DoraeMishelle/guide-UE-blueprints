@@ -4,34 +4,41 @@
 
 - [Introduction](#introduction)
 - [Set Up](#set-up)
-- [Blueprint Guide](#blueprint-guide)
+- [Blueprints Overview](#blueprints-overview)
+- [Get Started on your blueprint](Get-Started-on-your-blueprint)
 
 ## Introduction
 
-Welcome to the Unreal Engine Blueprint Guide. This will outline how to get started on making blueprints in Unreal Engine using both blueprints and C++.
+Welcome to the Unreal Engine (UE) Blueprint Guide. This will outline how to get started on making blueprints in UE using both blueprints and C++ and is made for game developers who aspire to get started on making something cool in UE.
 
 ## Set Up
 
-Follow [this linked setup guide](install_UE.md) to get Unreal Engine installed on your computer.
+Follow [this linked setup guide](install_UE.md) to get UE installed on your computer.
 
-## Blueprint Guide
+*Note: Depending on what version you have (or will have) installed, the experience may be different and some instructions in this tutorial may not be 1:1 with your version. Please consult other guides, tutorials, and internet searches for the best outcome.*
 
-For this guide, we will be working with the latest version at the time of writing which is 5.5.4. The rest of this guide will outline a simple and easy tutorial for Unreal Engine blueprints. If you want to see the full developer documentation you can head to the [developer guides on the Epic website](https://dev.epicgames.com/documentation/en-us/unreal-engine/blueprints-visual-scripting-in-unreal-engine)
+## Blueprints Overview
 
-### Blueprints Overview
+For this guide, we will be working with the latest version at the time of writing which is 5.5.4. The rest of this guide will outline a simple and easy tutorial for UE blueprints. If you want to see the full developer documentation you can head to the [developer guides on the Epic website](https://dev.epicgames.com/documentation/en-us/unreal-engine/blueprints-visual-scripting-in-unreal-engine)
 
-What is a blueprint?: A visual scripting system to achieve gameplay scripting through nodes- all within Unreal Engine.
+### What is a blueprint
+
+A blueprint is a visual scripting system to achieve gameplay scripting through nodes-based functionality- all within UE.
 
 You can create unique gameplay by C++ alone or also coupled with the blueprints feature. It makes creating gameplay easy and accessible without the need to know everything about writing in C++ code.
 Here is a preview of a blueprint that we will walk through the components and logic for.
 
-Intention: We will start by making changes in the level, then using C++ to add preliminary logic, and lastly we will build out the details in the blueprint to acheieve the blueprint pictured above.
-
 ![alt text](<ue blueprint image.png>)
 
-In this image, the boxes are nodes and they all connect to each other in some logical way.
+In this image, the boxes are nodes and they all connect to each other in some logical way through the curved lines attached to them. So, lets get started!
 
-### Launch Unreal Engine and configure your project
+### Intention
+
+We will start by making changes and configuring settings in the level, then using C++ to add preliminary logic, and lastly we will build out the details in the blueprint to acheieve the blueprint pictured above.
+
+## Get started on your blueprint
+
+### Launch UE and configure your project
 
 ![alt text](<Screenshot 2025-05-07 173604.png>)
 
@@ -43,9 +50,11 @@ In this image, the boxes are nodes and they all connect to each other in some lo
     1. Target Platform is Desktop
     1. Check Starter Content box
 
-Your level should load and next we will want to add a playable character to this level
+Your level should load and next we will want to add a playable character to this level.
 
 ### Add a playable character
+
+Depending on if you chose an earlier version such as in UE4, it may come with this already loaded in the level in which you would then skip to the [C++ environment](#c-environment) section below.
 
 1. Select Content Drawer in the bottom left corner
 1. Click Add (with green plus)
@@ -55,12 +64,16 @@ Your level should load and next we will want to add a playable character to this
 1. Select project settings
 1. Click maps and modes
 1. Under default mode, select third person (listed as BP_ThirdPersonGameMode)
-1. You close the windows that are open leaving the main viewport and press the green play button. This will trigger the playable character to move around.
+1. You can close the excess windows that are open (leaving open the main viewport window) and press the green play button. This will trigger the playable character to move around.
 1. Click anywhere in the level and drag your mouse in the direction you want the character to move
 1. Press red stop button when you are done
 
-The next step is to add physics to our cylinder(s) and so we will be required to set up our C++ environment
+![alt text](<UE5 third person level with actor.png>)
+
+The next step is to add physics to our actor(s) already in in the level so we will be required to set up our C++ environment.
 
 ### C++ environment
 
-We will need to configure a new C++ environment to create some logic for our actors
+We will need to configure a new C++ environment to create some logic for our actor(s). If you are new to programming, do not worry as this will not be intensive and you dont need to know very much.
+
+However, this will be a learning experience and is a good entry point into working with C++ and blueprints combined- a useful skill in game development and Unreal Engine.
