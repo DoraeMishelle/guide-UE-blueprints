@@ -4,11 +4,12 @@
 
 ## Contents
 
-[Set Up](#set-up)
+- [Set Up](#set-up)
+- [Blueprints Guide](#blueprints-guide)
 
 ## Set up
 
-To dowload, install, and configure Unreal Engine:
+To download, install, and configure Unreal Engine:
 
 ![alt text](<download unreal engine.png>)
 
@@ -38,4 +39,8 @@ To dowload, install, and configure Unreal Engine:
 
 1. After Unreal Engine is installed, launch Unreal Engine.
 
+## Blueprints Guide
+
 Optional: Navigate to the [blueprints guide to get started on blueprints.](guide_blueprints.md)
+
+[Back to the top](#download-and-install-unreal-engine)

@@ -1,4 +1,4 @@
-# Unreal Engine Blueprint User Guide
+# Unreal Engine Blueprints User Guide
 
 ## Table of Contents
 
@@ -6,6 +6,7 @@
 - [Set Up](#set-up)
 - [Blueprints Overview](#blueprints-overview)
 - [Get Started on your blueprint](Get-Started-on-your-blueprint)
+- [Common Issues](Common-Issues)
 
 ## Introduction
 
@@ -30,9 +31,9 @@ Here is a preview of a blueprint that we will walk through the components and lo
 
 ![alt text](<ue blueprint image.png>)
 
-In this image, the boxes are nodes and they all connect to each other in some logical way through the curved lines attached to them. So, lets get started!
+In this image, the boxes are called nodes and they all connect to each other in some logical way through the curved lines attached to them. So, lets get started!
 
-### Intention
+### Intention for this guide
 
 We will start by making changes and configuring settings in the level, then using C++ to add preliminary logic, and lastly we will build out the details in the blueprint to acheieve the blueprint pictured above.
 
@@ -108,3 +109,26 @@ With the Add C++ Class window open, you will see a list of available classes.
 1. Specify a different actor name or leave it as MyActor
 1. Click create class. The default code in this class will be compiled and will open in a Visual Studio window
 1. From here we will be looking at C++ code. You should see two tabs open: MyActor.cpp and MyActor.h
+
+    *Note: C++ code generated from previous versions of Unreal Engine such as in UE4 will have code that looks slightly different but will still achieve the same result we are looking for*
+
+![alt text](<MyActor.cpp bare actor code; no errors.png>)
+![alt text](<MyActor.h bare actor code; no errors.png>)
+
+#### Writing code in Visual Studio
+
+1. . From here we want to add logging that we can track in UE:
+    1. In the MyActor.cpp file, under the method ```void AMyActor::BeginPlay()``` we want to add a line of code after ```Super::BeginPlay();```. Space down under this line
+    1. Copy this code and paste into the space```UE_LOG(LogActor, Warning, TEXT("*** Hello from UE5 ***"));```
+
+        *Note: This is case sensitive so please take note of any text in all caps*
+1. Now we need to initialize or define our logging:
+    1. In the MyActor.cpp file you will find at the beginning ```#include MyActor.h```. Space down from this line and include this code:
+
+## Common issues
+
+If you are running into technical issues and maybe are stuck with troubleshooting, here are some common issues that may save you a trip to Google:
+
+### Missing build tools
+
+[Back to the top](#unreal-engine-blueprints-user-guide)
