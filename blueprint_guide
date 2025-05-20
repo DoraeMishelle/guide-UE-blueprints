@@ -56,7 +56,7 @@ Your level should load and next we will want to add a playable character to this
 
 ### Add a playable character
 
-Depending on if you chose an earlier version such as in UE4, it may come with this already loaded in the level in which you would then skip to the [Implementing C++ environment](#implementing-c-environment) section below.
+Depending on if you chose an earlier version, such as in UE4, it may come with this already loaded in the level. If so, you can then skip to the [Implementing C++ environment](#implementing-c-environment) section below. Otherwise continue with the following steps:
 
 1. Select Content Drawer in the bottom left corner
 1. Click Add (with green plus)
