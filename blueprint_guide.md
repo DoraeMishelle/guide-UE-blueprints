@@ -93,42 +93,150 @@ From here you can continue below to install Visual Studio or skip to the followi
 
 #### Downloading Visual Studio
 
-This section is continuing on from the end of the previous section.
-
-1. While the Add C++ Class window open, in the bottom right corner click Install Visual Studio (*year*).
+1. Click "Install Visual Studio (*year*)" in the bottom right corner of the "Add C++ Class" window.
 1. Follow the computer pop-ups to finish installation of Visual Studio
-1. When it is finished installing you may need to close and re-open UE to proceed with choosing a C++ parent class. The engine will then recognize the newly installed IDE and the "No compiler" error message will disappear.
+1. Close and reopen UE when the installation is finished. The engine will then recognize the newly installed IDE and the "No compiler" error message will disappear.
 1. Proceed to the next section
 
 #### Creating an actor parent class in C++
 
-With the Add C++ Class window open, you will see a list of available classes.
-
+1. Open the Add C++ Class window and you will see a list of available classes.
 1. Select "Actor" as our parent class
 1. Click next
 1. Specify a different actor name or leave it as MyActor
 1. Click create class. The default code in this class will be compiled and will open in a Visual Studio window
 1. From here we will be looking at C++ code. You should see two tabs open: MyActor.cpp and MyActor.h
 
-    *Note: C++ code generated from previous versions of Unreal Engine such as in UE4 will have code that looks slightly different but will still achieve the same result we are looking for*
+    *Note: C++ code generated from previous versions of Unreal Engine, such as in UE4, will have code that looks slightly different but will still achieve the same result we are looking for*
 
 ![alt text](<MyActor.cpp bare actor code; no errors.png>)
 ![alt text](<MyActor.h bare actor code; no errors.png>)
 
-#### Writing code in Visual Studio
+### Writing code in Visual Studio
 
-1. . From here we want to add logging that we can track in UE:
-    1. In the MyActor.cpp file, under the method ```void AMyActor::BeginPlay()``` we want to add a line of code after ```Super::BeginPlay();```. Space down under this line
-    1. Copy this code and paste into the space```UE_LOG(LogActor, Warning, TEXT("*** Hello from UE5 ***"));```
+Refer to the [common issues](#common-issues) section to troubleshoot issues with your code or with Visual Studio.
 
-        *Note: This is case sensitive so please take note of any text in all caps*
-1. Now we need to initialize or define our logging:
-    1. In the MyActor.cpp file you will find at the beginning ```#include MyActor.h```. Space down from this line and include this code:
+#### Logging in VS (optional)
+
+1. From here we want to add logging that we can track in UE. This will be just the initial code we need to start our blueprints:
+
+     In the MyActor.cpp (cpp) file, you will find the method:
+
+        void AMyActor::BeginPlay()
+        {
+            Super::BeginPlay(); 
+
+        }
+        
+    We want to add a line of code within these brackets. Press enter after the semi-colon and copy this code to paste in the space:
+
+        UE_LOG(LogActor, Warning, TEXT("*** Hello from UE5 ***"));
+        
+    *Note: This is case sensitive so please take note of any text in all caps*
+
+    The UE_LOG is a macro
+1. Now we need to initialize, or define, our logging:
+
+     In the MyActor.cpp file you will find at the beginning
+
+        #include MyActor.h
+
+    In the line under this, copy and paste this code:
+
+        DEFINE_LOG_CATEGORY(PROJECTNAME);
+
+    "PROJECTNAME" should be the name of your (C++) project which IS the same name of your UE project. Replace the text within the parentheses with the name of your project.
+
+    Now we will move to the MyActor.h (header) file in the next tab. You will find at the beginning this code:
+
+        #include "CoreMinimal.h"
+        #include "GameFramework/Actor.h"
+        #include "MyActor.generated.h"
+        
+    Space down from this code and include tihs line:
+
+        DECLARE_LOG_CATEGORY_EXTERN(PROJECTNAME, Log, Log);
+
+    Similarly to the parameters for PROJECTNAME in the MyActor.cpp, change the text to your projects name in the MyActor.h file.
+1. Head to the project in UE and click compile
+
+#### Making the actor visible in VS
+
+1. The header file has a public tick method called ```virtual void Tick(float DeltaTime) override;``` . Copy and paste this code there:
+
+        UPROPERTY()
+        USceneComponent* Root;
+
+1. In the ```AMyActor``` class of the cpp file you can copy and paste this code:
+
+        Root = CreateDefaultSubobject<USceneComponent>(TEXT("Root"));
+        RootComponent = Root;
+
+1. Head to the project in UE and click compile
+
+#### Adding meshes to an actor in VS
+
+In the header file we are adding a new UPROPERTY parameter in the tick method:
+
+    UPROPERTY(EditAnywhere)
+    UStaticMeshComponent* Mesh;
+
+In the cpp file we are adding the mesh methods in the ```AMyActor``` class:
+
+    Mesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Mesh"))
+    Mesh->AttachTo(Root);
+
+Next, click compile in UE
+
+More mesh options for this actor will show up in the details panel in UE and under static mesh.
+
+#### Adding physics to an actor
+
+Start by checking the Mass box in the Physics section of the Unreal editor.
+
+Expand the Constraints section and lock the rotation of the actor by checking x,y, and z. This is to limit the movement of the box to only have upward mobility.
+
+In the tick function of the header file you can paste this code:
+
+    UPROPERTY(EditAnywhere)
+    AActor* Player;
+
+    UFUNCTION(BlueprintCallable)
+    void LiftCube();
+
+We also want a new class in the .cpp file which you can add at the very bottom of the code:
+
+    void AMyActor::LiftCube()
+    {
+        Mesh->AddImpulse(FVector(0, 0, 1000) * Mesh->GetMass());
+
+    }
+Compile the project in UE
 
 ## Common issues
 
-If you are running into technical issues and maybe are stuck with troubleshooting, here are some common issues that may save you a trip to Google:
+If you are running into technical issues for Windows, here are some common issues and solutions:
 
 ### Missing build tools
+
+In the case of a compile error, you may see these errors in the output
+![alt text](<missing build tools;UE5 platform issues.png>)
+
+To resolve the issue:
+
+1. In the top menu bar, go to Tools > Get Tools and Features. A new window should open.
+
+1. Verify that you have you have the correct packages and build tools version installed for your OS. Windows will require these:
+    - Game Development with C++
+    - Desktop Development with C++
+    - .Net Desktop Development
+
+    Installation details on the left will list with a checkmark the SDK version you have (i.e. Windows 11 SDK if your computer runs Windows 11; Windows 10 SDK if your computer runs Windows 10 OS).
+
+    ![alt text](<vs code features and components.png>)
+
+1. If you don't have the correct SDK, check the correct one (and uncheck the one that is incorrect) and and click modify.
+
+1. Close and reopen Visual Studio
 
 [Back to the top](#unreal-engine-blueprints-user-guide)

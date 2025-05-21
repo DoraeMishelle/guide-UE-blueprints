@@ -21,7 +21,7 @@ To download, install, and configure Unreal Engine:
 
 1. Run the launcher after it is installation or click the link on the website to open the launcher.
 
-1. Once the launcher is running, log in to your Epic Games Account.
+1. Log in to your Epic Games account once you have the launcher up and running
 
     If you don't have an account yet, you will have an option to create one at the log in screen. If you would like to make one beforehand you can use [this link to create an Epic Games account.](https://www.epicgames.com/id/register/dhttps://store.epicgames.com/en-US/)
 
